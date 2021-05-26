@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    padding-top: 1.2em;
+}
+
+.userImage{
+    width: 4vw;
+}
+.userName{
+    color: black;
+    font-size: 1.5em;
+}

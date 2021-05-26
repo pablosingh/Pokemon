@@ -1,0 +1,51 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    /* padding-top: 2em; */
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardPokemon{
+    /* width: 90%; */
+    font-size: 1.2em;
+    height: 90%;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(34, 150, 228, 0.5);
+    padding: 1em;
+    margin: 2em;
+    border-radius: 0.3em;
+}
+.imgPokemon{
+    height: 10em;
+}
+
+
+.imgTitle{
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+}
+.details{
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.btn{
+    font-size: 0.7em;
+    /* background-color: rgba(75, 180, 250, 0.5); */
+    background-color: rgba(215, 248, 246, 0.8);
+    border-radius: 0.2em;
+    border: none;
+    padding: 0.5em;
+    margin: 1em 1em;
+    text-decoration: none;
+}
+.btn:hover{
+    background-color: rgb(50, 190, 224);
+}

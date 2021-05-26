@@ -1,0 +1,87 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+}
+
+.subContainer{
+    display: flex;
+    justify-content: space-around;
+    /* background-color: rgba(139, 138, 138, 0.75); */
+    /* background-color: rgba(34, 150, 228, 0.2); */
+    background-color: rgba(236, 238, 240, 0.2);
+    border-radius: 0.7em;
+}
+.data{
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 0.5em;
+    /* background-color: rgba(139, 138, 138, 0.555); */
+    border: none;
+}
+.types{
+    font-size: 1.5em;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border-radius: 0.5em;
+    /* background-color: rgba(139, 138, 138, 0.555); */
+    border: none;
+}
+/* =================================================================== */
+.listTypes{
+    font-size: 1.1em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.itemType{
+    padding: 0em 1em 0em 1em;
+    /* color: rgba(34, 150, 228, 0.5); */
+    /* background-color: rgba(34, 150, 228, 0.5); */
+}
+/* =================================================================== */
+
+.inputData{
+    border: none;
+    font-size: 0.8em;
+    border-radius: 0.2em;
+    padding: 0;
+    margin: 0.5em 0.7em;
+}
+.labelData{
+    /* color: rgba(34, 150, 228, 1); */
+    color: black;
+}
+
+/* =================================================================== */
+.btn{
+    font-size: 1.2em;
+    background-color: rgba(34, 150, 228, 0.5);
+    border-radius: 0.2em;
+    border: none;
+    padding: 0.5em;
+    margin: 0.7em 2em;
+}
+.btn:hover{
+    background-color: rgb(50, 190, 224);
+}
+
+/* ========================================================================= */
+.supercontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.check{
+    margin-left: 1em;
+}

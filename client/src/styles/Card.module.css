@@ -1,0 +1,24 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+    margin: 0.5em 5em;
+    width: 15%;
+    /* height: 50%; */
+    border-radius: 0.3em;
+    /* border: 1px solid black; */
+    background-color: rgba(34, 150, 228, 0.5);
+    /* background-color: rgba(1,120,152,255); */
+    text-decoration: none;
+    padding: 1em 0;
+}
+.container:hover{
+    background-color: rgba(215, 248, 246, 0.8);
+}
+.imgCard{
+    height: 8em;
+}
+.nameCard{
+    margin: 0.2em;
+}

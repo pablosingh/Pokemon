@@ -1,0 +1,27 @@
+.container{
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    padding-top: 2em;
+    width: 90%;
+}
+.btn{
+    font-size: 1.1em;
+    /* background-color: violet; */
+    background-color: rgba(1,120,152,255);
+    border-radius: 0.2em;
+    border: none;
+    padding: 0.5em;
+    margin: 0em 2em;
+}
+.btn:hover{
+    /* background-color: rgb(214, 55, 214); */
+    background-color: rgb(50, 190, 224);
+}
+
+.searchText{
+    border: none;
+    font-size: 1.1em;
+    border-radius: 0.2em;
+    width: 40%;
+}

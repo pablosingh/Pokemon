@@ -1,0 +1,18 @@
+.container{
+    display: flex;
+}
+
+.bodyFilter{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.filtereds{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.title{
+    color: whitesmoke;
+    margin: 0;
+}
