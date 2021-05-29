@@ -18,22 +18,15 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
-const { db } = require('./src/db.js');
-const { Pokemon } = require('./src/models/Pokemon');
-const { Type } = require('./src/models/Type');
-const { Pokemon_Type } = require('./src/models/Pokemon_Type');
-const loadCardsFromDB = require('./src/controllers/loadCardsFromDB');
-const initLoadFromApi = require('./src/controllers/initLoadFromApi');
-const initLoadTypes = require('./src/controllers/initLoadTypes');
+const { conn } = require('./src/db.js');
+const loadTypes = require('./src/routes/loadTypes');
+const loadCards = require('./src/routes/loadCards');
 
-db.sync({ force: false }).then(() => {
+// Syncing all the models at once.
+conn.sync({ force: false }).then(() => {
   server.listen(3001, () => {
-    console.log('listening at 3001'); // eslint-disable-line no-console
-    
-    Pokemon.belongsToMany(Type, { through: Pokemon_Type } );
-    Type.belongsToMany(Pokemon, { through: Pokemon_Type } );
-    // initLoadTypes();
-    // initLoadFromApi();
-    loadCardsFromDB();
+    console.log('%s listening at 3001'); // eslint-disable-line no-console
+    // loadTypes();
+    // console.log('================ Ejecuto ================');
   });
 });

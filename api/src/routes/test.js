@@ -1,39 +1,26 @@
-const fetch = require("node-fetch");
-const { Pokemon, Type } = require('../db');
+const { Pokemon } = require('../models/Pokemon');
+const { Type } = require('../models/Type');
+const { types } =require('../db');
 
-const test = (req, res) => {
-    const promesas = [];
-    const subPromesas = [];
-    const all = [];
-    try {
-        fetch( `https://pokeapi.co/api/v2/pokemon?offset=0&limit=1100` )
-            .then( js => js.json() )
-            .then( data => data.results.forEach( r => promesas.push( fetch(r.url) ) ))
-            .then( () => {
-                Promise.all(promesas)
-                    .then( values => values.forEach( v => subPromesas.push( v.json() ) ) )
-                    .then( () => {
-                        Promise.all(subPromesas)
-                            .then( pokemones => {
-                                pokemones.forEach( p => {
-                                    let types = [];
-                                    p.types.forEach( t => types.push(t.type.name));
-                                    all.push({
-                                        id: p.id,
-                                        name: p.name,
-                                        img: p.sprites.front_default,
-                                        attack: p.stats[1].base_stat,
-                                        types
-                                    });
-                                });
-                            } )
-                            .then( () => res.json(all) )
-                    } )
-            })
-            .catch( err => console.log(err) );
-    } catch (e) {
-        res.json({ msg: e });
-    }
-};
+const test = async (req, res) => {
+    // console.log(req.query.id);
+    // const found = await Pokemon.findAll({
+    //     where: {
+    //         name: 'pidgeotto'
+    //     },
+    //     include: Type
+    // })
+    // if(!found.length) res.status(404).json('Pokemon No encontrado');
+    // else{
+    //     // console.log(found[0].dataValues);
+    //     const toSend = found[0].dataValues;
+    //     toSend.types = toSend.types.map( t => t.name);
+    //     console.log(toSend);
+    //     res.json(toSend);
+    // }
+    // // console.log(found);
+    // // res.json('ok');
+    res.json( types );
+}
 
 module.exports = test;
