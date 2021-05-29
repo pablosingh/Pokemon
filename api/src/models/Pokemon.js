@@ -70,3 +70,17 @@ module.exports = (sequelize) => {
 //   x     speed,
 //   x      height,
 //   x      weight,
+
+// ====================================================================
+// const { Sequelize } = require('sequelize');
+
+
+
+
+
+
+
+
+
+
+
