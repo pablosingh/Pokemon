@@ -3,7 +3,9 @@ const {
     byNameAsc,
     byNameDes,
     byAttackAsc,
-    byAttackDes
+    byAttackDes,
+    onlyTypes,
+    types
  } = require('../db');
 
 function initOrdered(){
@@ -37,6 +39,16 @@ function initOrdered(){
         else return 0;
       });
     aux.forEach( a => byAttackDes.push(a) );
+    // ==========================================================================
+    onlyTypes.forEach( type => {
+      let index = types.push({
+        name: type,
+        ids: []
+      });
+      let array = cards.filter( card => card.types.includes(type) );
+      let ids = array.map( a => a.id );
+      ids.forEach( id => types[index-1].ids.push(id) );
+    });
 };
 
 module.exports = initOrdered;
