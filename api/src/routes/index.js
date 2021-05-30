@@ -10,6 +10,7 @@ const byAttackDesFn = require('./byAttackDesFn');
 const filterTypeFn = require('./filterTypeFn');
 const findByIdFn = require('./findByIdFn');
 const findByNameFn = require('./findByNameFn');
+const pagesAndLimitFn = require('./pagesAndLimitFn');
 
 router.get('/test', test );
 router.get('/cards', cardsFromDB);
@@ -23,5 +24,7 @@ router.get('/ordered/attack/des', byAttackDesFn);
 router.get('/filter', filterTypeFn); // Con query
 router.get('/find/id/:id', findByIdFn);
 router.get('/find/name/:name', findByNameFn);
+
+router.get('/pages', pagesAndLimitFn);
 
 module.exports = router;

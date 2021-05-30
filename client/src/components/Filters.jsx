@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import { 
-    sortByNameAsc, 
-    sortByNameDes, 
-    sortByAttackAsc, 
-    sortByAttackDes, 
-    selectTypes,
-    filter,
-    filterOnlyDB,
-    filterOnlyApi,
-    setSubFiltereds
+    loadFilters
+//     selectTypes,
+//     filter,
+//     filterOnlyDB,
+//     filterOnlyApi,
+//     setSubFiltereds
 } from '../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import s from '../styles/Filters.module.css';
@@ -41,26 +38,22 @@ export default function Filters() {
                 <h2>Ordenar por</h2>
                 <Link to="/filtered" >
                     <button onClick={ ()=> {
-                        dispatch(sortByNameAsc());
-                        dispatch(setSubFiltereds(0));
+                        dispatch(loadFilters('name','asc',0));
                     } }className={s.btn} >Nombre Asc</button>
                 </Link>
                 <Link to="/filtered" >
                     <button onClick={ ()=> {
-                        dispatch(sortByNameDes());
-                        dispatch(setSubFiltereds(0));
+                        dispatch(loadFilters('name','des',0));
                     } } className={s.btn}>Nombre Des</button>
                 </Link>
                 <Link to="/filtered" >
                     <button onClick={ ()=> {
-                        dispatch(sortByAttackAsc());
-                        dispatch(setSubFiltereds(0));
+                        dispatch(loadFilters('attack','asc',0));
                     } } className={s.btn}>Fuerza Asc</button>
                 </Link>
                 <Link to="/filtered" >
                     <button onClick={ ()=> {
-                        dispatch(sortByAttackDes());
-                        dispatch(setSubFiltereds(0));
+                        dispatch(loadFilters('attack','des',0));
                     } } className={s.btn}>Fuerza Des</button>
                 </Link>
             </div>
@@ -68,16 +61,16 @@ export default function Filters() {
                 <Link to="/filtered" >
                     <button className={s.btn}
                         onClick={() => {
-                            dispatch(filterOnlyDB());
-                            dispatch(setSubFiltereds(0));
+                            // dispatch(filterOnlyDB());
+                            // dispatch(setSubFiltereds(0));
                         }}
                         >solo de DB</button>
                 </Link>
                 <Link to="/filtered" >
                     <button className={s.btn}
                     onClick={() => {
-                        dispatch(filterOnlyApi());
-                        dispatch(setSubFiltereds(0));
+                        // dispatch(filterOnlyApi());
+                        // dispatch(setSubFiltereds(0));
                     }}
                     >solo de Api</button>
                 </Link>
@@ -96,9 +89,9 @@ export default function Filters() {
                     </label>) }
                 <Link to="/filtered">
                     <button onClick={()=>{
-                        dispatch( selectTypes( validate() ) );
-                        dispatch( filter() );
-                        dispatch( setSubFiltereds(0));
+                        // dispatch( selectTypes( validate() ) );
+                        // dispatch( filter() );
+                        // dispatch( setSubFiltereds(0));
                         }} className={s.btn}>Aplicar</button>
                 </Link>
             </div>

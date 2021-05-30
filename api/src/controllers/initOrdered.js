@@ -49,6 +49,15 @@ function initOrdered(){
       let ids = array.map( a => a.id );
       ids.forEach( id => types[index-1].ids.push(id) );
     });
+    // ==============================================================================
+    aux = [...cards.sort(function (a, b) {
+      // console.log('entro');
+        if (a.id > b.id) return 1;
+        else if (a.id < b.id) return -1;
+        else return 0;
+      })];
+    cards.splice(0,cards.length);
+    aux.forEach( a => cards.push(a) );
 };
 
 module.exports = initOrdered;

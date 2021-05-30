@@ -4,10 +4,10 @@ import { useSelector } from 'react-redux';
 import s from '../styles/Cards.module.css';
 
 export default function Cards() {
-    const subCards = useSelector( state => state.subCards );
+    const cards = useSelector( state => state.cards );
     return (
         <div className={s.container}>
-            {subCards && subCards.map( c => <Card pokemon={c} key={c.id}/>)} 
+            {cards && cards.map( c => <Card pokemon={c} key={c.id}/>)} 
         </div>
     )
 }

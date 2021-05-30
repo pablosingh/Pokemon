@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSubFiltereds } from '../redux/actions';
+// import { setSubFiltereds } from '../redux/actions';
 import s from '../styles/PagedFilter.module.css';
 
 export default function PagedFilter() {
@@ -13,8 +13,8 @@ export default function PagedFilter() {
             <div className={s.containerBtn}>
                 <button className={s.btn}
                 onClick={()=> {
-                    if ( actualPageFilter>0 )
-                        dispatch( setSubFiltereds(actualPageFilter-1));
+                    // if ( actualPageFilter>0 )
+                        // dispatch( setSubFiltereds(actualPageFilter-1));
                 } }
                     >{prev}</button>
 
@@ -22,14 +22,14 @@ export default function PagedFilter() {
                     key={p}
                     className={`${s.btn} ${(p===actualPageFilter) ? s.active : ` `}`}
                     onClick={()=> {
-                        dispatch( setSubFiltereds(p));
+                        // dispatch( setSubFiltereds(p));
                     } }
                     >{p+1}</button>) }
 
                 <button 
                     className={s.btn}
                     onClick={()=> {
-                        dispatch( setSubFiltereds(actualPageFilter+1));
+                        // dispatch( setSubFiltereds(actualPageFilter+1));
                     } }
                     >{next}</button>
             </div>

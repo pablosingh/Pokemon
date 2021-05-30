@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { loadCards, loadTypes } from '../redux/actions';
+// import { loadTypes } from '../redux/actions';
+import { loadCards, loadPages, searchPokemon } from '../redux/actions';
 import Logo from './Logo';
 import User from './User';
 import NavBar from './NavBar';
@@ -10,7 +11,8 @@ export default function Head() {
     const dispatch = useDispatch();
     useEffect( () => {
         dispatch( loadCards() );
-        dispatch( loadTypes() );
+        dispatch( loadPages() );
+        dispatch( searchPokemon(1) );
     }, [] );
     return (
         <div className={s.head}>

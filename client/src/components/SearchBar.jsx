@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import { searchPokemon } from '../redux/actions';
 import s from '../styles/SearchBar.module.css';
 
 export default function SearchBar() {
+    const estado = useSelector(state => state);
     const [ searchText, setSearchText ] = useState("");
 
     let history = useHistory("/pokemon");
@@ -20,6 +21,7 @@ export default function SearchBar() {
     }
 
     return (
+        <div>
         <form className={s.container} action='POST'>
             <input type="searchText" 
                 placeholder="Search" 
@@ -30,5 +32,9 @@ export default function SearchBar() {
                     Search
                 </button>
         </form>
+                <button onClick={ ()=> console.log(estado)}>
+                    Estado
+                </button>
+        </div>
     )
 }

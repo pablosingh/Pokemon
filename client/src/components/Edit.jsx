@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
-import { addToCards, SET_POKEMON } from '../redux/actions'
+// import { addToCards, SET_POKEMON } from '../redux/actions'
 import SearchBar from './SearchBar';
 import s from '../styles/Edit.module.css';
 
@@ -28,7 +28,7 @@ export default function Edit() {
     }, []);
     const dispatch = useDispatch();
     const types = useSelector( state => state.types );
-    const actualPokemon = useSelector( state => state.actualPokemon );
+    const actualPokemon = useSelector( state => state.pokemon );
 
     const [data, setData] = useState({});
     const [checked, setChecked] = useState({});
@@ -75,7 +75,7 @@ export default function Edit() {
                 console.log('Status : ',res.status);
                 if ( res.status === 404){
                     toSend.name = 'Error - No Editado'
-                    dispatch( { type: SET_POKEMON, payload: toSend } )
+                    // dispatch( { type: SET_POKEMON, payload: toSend } )
                     history.push('/pokemon');
                 }else{
                     // dispatch( { type: DELETE_POKEMON_BY_STATE, payload: toSend.id  });
@@ -87,8 +87,8 @@ export default function Edit() {
                         .then( data => {
                             toSend.id = `db ${data.id}`;
                         } )
-                        .then( dispatch( addToCards( toSend ) ) )
-                        .then( () => dispatch( { type: SET_POKEMON, payload: toSend } ) )
+                        // .then( dispatch( addToCards( toSend ) ) )
+                        // .then( () => dispatch( { type: SET_POKEMON, payload: toSend } ) )
                         // .then( () => dispatch( { type: ADD_TO_CARDS, payload: toSend } ) )
                         .then( () => history.push('/pokemon') )
                         .catch( err => console.error(err));

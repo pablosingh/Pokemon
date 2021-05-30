@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import s from '../styles/Pokemon.module.css';
 
 export default function Pokemon() {
-    const actualPokemon = useSelector( state => state.actualPokemon );
+    const actualPokemon = useSelector( state => state.pokemon );
     const { 
         image,
         name,
