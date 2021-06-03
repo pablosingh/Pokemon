@@ -5,9 +5,9 @@ import s from '../styles/Paged.module.css';
 
 export default function Paged() {
     // const subPages = useSelector( state => state.subPages);
-    const actualPage = useSelector( state => state.pagesRedux.actualPage);
-    const amountPages = useSelector( state => state.pagesRedux.pages);
-    const paged = useSelector( state => state.pagesRedux.subPaged);
+    const actualPage = useSelector( state => state.pages.actualPage);
+    const amountPages = useSelector( state => state.pages.pages);
+    const paged = useSelector( state => state.pages.subPaged);
 
     const dispatch = useDispatch();
     const next='>>', prev='<<';

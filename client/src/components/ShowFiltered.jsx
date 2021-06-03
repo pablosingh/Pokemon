@@ -6,7 +6,7 @@ import {  useSelector } from 'react-redux'
 import s from '../styles/ShowFiltered.module.css';
 
 export default function ShowFiltered() {
-    const subFiltereds = useSelector( state => state.filters );
+    const subFiltereds = useSelector( state => state.filters.subFilters );
     return (
         <div className={s.container}>
             <Filters/>

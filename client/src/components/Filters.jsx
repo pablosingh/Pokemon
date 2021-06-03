@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { 
-    loadFilters
+    setActualPageFilter,
+    sortByNameAsc,
+    sortByNameDes,
+    sortByAttackAsc,
+    sortByAttackDes
 //     selectTypes,
 //     filter,
 //     filterOnlyDB,
@@ -38,22 +42,26 @@ export default function Filters() {
                 <h2>Ordenar por</h2>
                 <Link to="/filtered" >
                     <button onClick={ ()=> {
-                        dispatch(loadFilters('name','asc',0));
+                        dispatch(sortByNameAsc());
+                        dispatch(setActualPageFilter(0));
                     } }className={s.btn} >Nombre Asc</button>
                 </Link>
                 <Link to="/filtered" >
                     <button onClick={ ()=> {
-                        dispatch(loadFilters('name','des',0));
+                        dispatch(sortByNameDes());
+                        dispatch(setActualPageFilter(0));
                     } } className={s.btn}>Nombre Des</button>
                 </Link>
                 <Link to="/filtered" >
                     <button onClick={ ()=> {
-                        dispatch(loadFilters('attack','asc',0));
+                        dispatch(sortByAttackAsc());
+                        dispatch(setActualPageFilter(0));
                     } } className={s.btn}>Fuerza Asc</button>
                 </Link>
                 <Link to="/filtered" >
                     <button onClick={ ()=> {
-                        dispatch(loadFilters('attack','des',0));
+                        dispatch(sortByAttackDes());
+                        dispatch(setActualPageFilter(0));
                     } } className={s.btn}>Fuerza Des</button>
                 </Link>
             </div>
