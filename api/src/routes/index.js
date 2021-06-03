@@ -11,9 +11,11 @@ const filterTypeFn = require('./filterTypeFn');
 const findByIdFn = require('./findByIdFn');
 const findByNameFn = require('./findByNameFn');
 const pagesAndLimitFn = require('./pagesAndLimitFn');
+const onlyTypesFn = require('./onlyTypesFn');
 
 router.get('/test', test );
 router.get('/cards', cardsFromDB);
+router.get('/types', onlyTypesFn);
 
 router.get('/ordered/name/asc', byNameAscFn); // query de paginas
 router.get('/ordered/name/des', byNameDesFn);

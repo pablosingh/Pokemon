@@ -13,6 +13,10 @@ export const SORT_BY_NAME_ASC = 'SORT_BY_NAME_ASC';
 export const SORT_BY_NAME_DES = 'SORT_BY_NAME_DES';
 export const SORT_BY_ATTACK_ASC = 'SORT_BY_ATTACK_ASC';
 export const SORT_BY_ATTACK_DES = 'SORT_BY_ATTACK_DES';
+//================================
+export const LOAD_TYPES = 'LOAD_TYPES';
+export const FILTER_BY_TYPES = 'FILTER_BY_TYPES';
+export const INIT_FILTERS = 'INIT_FILTERS';
 
 export function loadCards(){
     return async function(dispatch){
@@ -116,3 +120,20 @@ export function sortByAttackDes(){
         payload: null
     };
 };
+
+export function loadTypes(){
+    return async function(dispatch){
+        await fetch( `http://localhost:3001/types`).then( js => js.json() )
+            .then( types => dispatch( { type: LOAD_TYPES, payload: types } ) )
+            .catch( err => console.log(err) );
+    };
+};
+
+export function filterByTypes( arrayTypes ){
+    return{
+        type: FILTER_BY_TYPES,
+        payload: arrayTypes
+    };
+};
+
+export const initFilters = () => ({ type: INIT_FILTERS, payload: null });

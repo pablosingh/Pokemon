@@ -4,30 +4,26 @@ import {
     SORT_BY_NAME_ASC,
     SORT_BY_NAME_DES,
     SORT_BY_ATTACK_ASC,
-    SORT_BY_ATTACK_DES
+    SORT_BY_ATTACK_DES,
+    FILTER_BY_TYPES,
+    INIT_FILTERS
 } from './actions';
 
+import {
+    order,
+    setPreStateToFilter
+} from './functionsFilters';
+
 const initialState = {
+    cards: [],
     filters: [],
     subFilters: [],
     amountPages: 0,
     paged: [],
     subPaged: [],
-    actualPage: 0
+    actualPage: 0,
+    selectedTypes: []
 };
-
-function setPreStateToFilter(max, limitByPage=15){
-    let amountPages = max/limitByPage;
-    let paged = []
-    for ( let i=0; i<amountPages; i++ )
-        paged.push(i);
-    console.log("Paginas del filtro: ", amountPages);
-    return {
-        amountPages: amountPages,
-        paged: [...paged],
-        subPaged: [...paged.slice(0,10)]
-    };
-}
 
 export default function filters( state=initialState, action ){
     switch(action.type){
@@ -38,6 +34,7 @@ export default function filters( state=initialState, action ){
             console.log('paginas del filtro : ', action.payload.length/15);
             return {
                 ...state,
+                cards: [...action.payload],
                 filters: [...action.payload],
                 subFilters: [...action.payload.slice(0,14)],
                 amountPages: action.payload.length/15,
@@ -59,14 +56,15 @@ export default function filters( state=initialState, action ){
                 subPaged: [...setPages],
                 subFilters: [...state.filters.slice(action.payload*15, (action.payload*15)+15)]
             }
+        case INIT_FILTERS: 
+            return{
+                ...state,
+                filters: [...state.cards]
+            };
         // =======================================================================================
         case SORT_BY_NAME_ASC:
-            let arrayNameAsc = state.filters.sort(function (a, b) {
-                if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
-                else if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
-                else return 0;
-              });
-              let preStateNameAsc = setPreStateToFilter(arrayNameAsc.length);
+            let arrayNameAsc = order(state.filters, 'name', 'asc');
+            let preStateNameAsc = setPreStateToFilter(arrayNameAsc.length);
             return{
                 ...state,
                 filters: [...arrayNameAsc],
@@ -75,12 +73,8 @@ export default function filters( state=initialState, action ){
                 subPaged: [...preStateNameAsc.subPaged]
             };
         case SORT_BY_NAME_DES:
-            let arrayNameDes = state.filters.sort(function (b, a) {
-                if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
-                else if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
-                else return 0;
-                });
-                let preStateNameDes = setPreStateToFilter(arrayNameDes.length);
+            let arrayNameDes = order(state.filters, 'name', 'des');
+            let preStateNameDes = setPreStateToFilter(arrayNameDes.length);
             return{
                 ...state,
                 filters: [...arrayNameDes],
@@ -90,12 +84,8 @@ export default function filters( state=initialState, action ){
             };
         // =======================================================================================
         case SORT_BY_ATTACK_ASC:
-            let arrayAttackAsc = state.filters.sort(function (a, b) {
-                if (a.attack > b.attack) return 1;
-                else if (a.attack < b.attack) return -1;
-                else return 0;
-                });
-                let preStateAttackAsc = setPreStateToFilter(arrayAttackAsc.length);
+            let arrayAttackAsc = order(state.filters, 'attack', 'asc');
+            let preStateAttackAsc = setPreStateToFilter(arrayAttackAsc.length);
             return{
                 ...state,
                 filters: [...arrayAttackAsc],
@@ -104,18 +94,33 @@ export default function filters( state=initialState, action ){
                 subPaged: [...preStateAttackAsc.subPaged]
             };
         case SORT_BY_ATTACK_DES:
-            let arrayAttackDes = state.filters.sort(function (b, a) {
-                if (a.attack > b.attack) return 1;
-                else if (a.attack < b.attack) return -1;
-                else return 0;
-                });
-                let preStateAttackDes = setPreStateToFilter(arrayAttackDes.length);
+            let arrayAttackDes = order(state.filters, 'attack', 'des');
+            let preStateAttackDes = setPreStateToFilter(arrayAttackDes.length);
             return{
                 ...state,
                 filters: [...arrayAttackDes],
                 amountPages: preStateAttackDes.amountPages,
                 paged: [...preStateAttackDes.paged],
                 subPaged: [...preStateAttackDes.subPaged]
+            };
+        // ===========================================================
+        case FILTER_BY_TYPES:
+            let selectedTypes = [...action.payload];
+            let filterByTypes =  state.filters.filter( c => {
+                for(let i=0; i<selectedTypes.length; i++){
+                    if ( !c.types.includes( selectedTypes[i] ) )
+                        return false;
+                }
+                return true;
+            } );
+            let preStateFilterByTypes = setPreStateToFilter(filterByTypes.length);
+            return{
+                ...state,
+                filters: [...filterByTypes],
+                amountPages: preStateFilterByTypes.amountPages,
+                paged: [...preStateFilterByTypes.paged],
+                subPaged: [...preStateFilterByTypes.subPaged],
+                selectedTypes
             };
         default:
             return state;

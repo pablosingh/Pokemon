@@ -4,7 +4,8 @@ import {
     sortByNameAsc,
     sortByNameDes,
     sortByAttackAsc,
-    sortByAttackDes
+    sortByAttackDes,
+    filterByTypes
 //     selectTypes,
 //     filter,
 //     filterOnlyDB,
@@ -65,7 +66,7 @@ export default function Filters() {
                     } } className={s.btn}>Fuerza Des</button>
                 </Link>
             </div>
-            <div className={s.filter}>
+            {/* <div className={s.filter}>
                 <Link to="/filtered" >
                     <button className={s.btn}
                         onClick={() => {
@@ -82,9 +83,8 @@ export default function Filters() {
                     }}
                     >solo de Api</button>
                 </Link>
-            </div>
+            </div> */}
             <div className={s.filter}>
-                {/* <h2 className={s.subTitle}>Filtrar por</h2> */}
                 { types && types.map( t => <label
                         key={t} className={s.item}>
                             {t}
@@ -97,9 +97,10 @@ export default function Filters() {
                     </label>) }
                 <Link to="/filtered">
                     <button onClick={()=>{
-                        // dispatch( selectTypes( validate() ) );
+                        console.log(validate());
+                        dispatch( filterByTypes( validate() ) );
+                        dispatch(setActualPageFilter(0));
                         // dispatch( filter() );
-                        // dispatch( setSubFiltereds(0));
                         }} className={s.btn}>Aplicar</button>
                 </Link>
             </div>
