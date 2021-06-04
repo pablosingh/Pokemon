@@ -12,6 +12,7 @@ const findByIdFn = require('./findByIdFn');
 const findByNameFn = require('./findByNameFn');
 const pagesAndLimitFn = require('./pagesAndLimitFn');
 const onlyTypesFn = require('./onlyTypesFn');
+const createPokemonFn = require('./createPokemonFn');
 
 router.get('/test', test );
 router.get('/cards', cardsFromDB);
@@ -28,5 +29,7 @@ router.get('/find/id/:id', findByIdFn);
 router.get('/find/name/:name', findByNameFn);
 
 router.get('/pages', pagesAndLimitFn);
+
+router.post('/pokemon', createPokemonFn);
 
 module.exports = router;

@@ -17,6 +17,8 @@ export const SORT_BY_ATTACK_DES = 'SORT_BY_ATTACK_DES';
 export const LOAD_TYPES = 'LOAD_TYPES';
 export const FILTER_BY_TYPES = 'FILTER_BY_TYPES';
 export const INIT_FILTERS = 'INIT_FILTERS';
+// ====================================
+export const ADD_POKEMON_FILTER = 'ADD_POKEMON_FILTER';
 
 export function loadCards(){
     return async function(dispatch){
@@ -137,3 +139,5 @@ export function filterByTypes( arrayTypes ){
 };
 
 export const initFilters = () => ({ type: INIT_FILTERS, payload: null });
+
+export const addPokemonFilter = (pokemon) => ({ type: ADD_POKEMON_FILTER, payload: pokemon });

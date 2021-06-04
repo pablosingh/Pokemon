@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom";
-// import { addToCards, SET_POKEMON } from '../redux/actions'
+import { addPokemonFilter } from '../redux/actions';
 import s from '../styles/Create.module.css';
 
 export default function Create() {
@@ -53,29 +53,33 @@ export default function Create() {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(toSend)
-        } )
-            .then( async res => {
-                console.log('Status : ',res.status);
-                if ( res.status === 404){
-                    toSend.name = 'Error - Nombre duplicado'
-                    // dispatch( { type: SET_POKEMON, payload: toSend } )
-                    history.push('/pokemon');
-                }else{
-                    await fetch(`http://localhost:3001/db/byName/${toSend.name}`)
-                        .then( js => {
-                            console.log(js);
-                            return js.json();
-                        } )
-                        .then( data => {
-                            toSend.id = `db ${data.id}`;
-                        } )
-                        // .then( dispatch( addToCards( toSend ) ) )
-                        // .then( () => dispatch( { type: SET_POKEMON, payload: toSend } ) )
-                        .then( () => history.push('/pokemon') )
-                        .catch();
-                }
+        } ) .then( js => js.json() )
+            .then( pokemon => {
+                dispatch( addPokemonFilter(pokemon) );
             } )
             .catch( err => console.error(err) );
+        //     .then( async res => {
+        //         console.log('Status : ',res.status);
+        //         if ( res.status === 404){
+        //             toSend.name = 'Error - Nombre duplicado'
+        //             // dispatch( { type: SET_POKEMON, payload: toSend } )
+        //             history.push('/pokemon');
+        //         }else{
+        //             await fetch(`http://localhost:3001/db/byName/${toSend.name}`)
+        //                 .then( js => {
+        //                     console.log(js);
+        //                     return js.json();
+        //                 } )
+        //                 .then( data => {
+        //                     toSend.id = `db ${data.id}`;
+        //                 } )
+        //                 // .then( dispatch( addToCards( toSend ) ) )
+        //                 // .then( () => dispatch( { type: SET_POKEMON, payload: toSend } ) )
+        //                 .then( () => history.push('/pokemon') )
+        //                 .catch();
+        //         }
+        //     } )
+        //     .catch( err => console.error(err) );
     }
     return (
         <form className={s.container} action='POST'>

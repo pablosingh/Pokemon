@@ -6,7 +6,8 @@ import {
     SORT_BY_ATTACK_ASC,
     SORT_BY_ATTACK_DES,
     FILTER_BY_TYPES,
-    INIT_FILTERS
+    INIT_FILTERS,
+    ADD_POKEMON_FILTER
 } from './actions';
 
 import {
@@ -42,7 +43,7 @@ export default function filters( state=initialState, action ){
                 subPaged: [...paged.slice(0,9)]
             };
         case SET_ACTUAL_PAGE_FILTER:
-            console.log('entro');
+            console.log('=== state : ', state);
             let setPages = [];
             if ( action.payload > 4 && action.payload<=state.amountPages )
                 for ( let i=action.payload-4; i<=action.payload+4 && i<=state.amountPages; i++ )
@@ -60,6 +61,12 @@ export default function filters( state=initialState, action ){
             return{
                 ...state,
                 filters: [...state.cards]
+            };
+        // =======================================================================================
+        case ADD_POKEMON_FILTER:
+            return{
+                ...state,
+                cards: state.cards.concat(action.payload)
             };
         // =======================================================================================
         case SORT_BY_NAME_ASC:
