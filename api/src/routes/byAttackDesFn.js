@@ -1,6 +1,7 @@
-const { byAttackDes, pageLimit, pages } = require('../db');
+const { byAttackDes, pageLimit, cards } = require('../db');
 
 function byAttackDesFn(req, res){
+    const pages = cards.length/pageLimit;
     console.log(req.query.page);
     if( !req.query.page ) return res.json(byAttackDes); // Si no existe Todo
     if( isNaN(Number(req.query.page))) return res.json( byAttackDes.slice(pageLimit*(-1))); // No es un Nro 

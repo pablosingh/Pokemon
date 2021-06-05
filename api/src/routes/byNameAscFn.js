@@ -1,6 +1,7 @@
-const { byNameAsc, pageLimit, pages } = require('../db');
+const { byNameAsc, pageLimit, cards } = require('../db');
 
 function byNameAscFn(req, res){
+    const pages = cards.length/pageLimit;
     console.log(req.query.page);
     if( !req.query.page ) return res.json(byNameAsc); // Si no existe Todo
     if( isNaN(Number(req.query.page))) return res.json( byNameAsc.slice(pageLimit*(-1))); // No es un Nro 

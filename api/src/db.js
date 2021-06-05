@@ -12,8 +12,8 @@ var db = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/pokemon2
     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 });
 
+// var pages = 1;
 const pageLimit = 15;
-const pages = 74;
 const cards = [];
 const byNameAsc = [];
 const byNameDes = [];
@@ -30,7 +30,7 @@ const types = [];
 module.exports = {
     db,
     pageLimit,
-    pages,
+    // pages,
     cards,
     byNameAsc,
     byNameDes,

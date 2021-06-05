@@ -1,5 +1,6 @@
 const { 
     cards,
+    pageLimit,
     byNameAsc,
     byNameDes,
     byAttackAsc,
@@ -7,6 +8,8 @@ const {
     onlyTypes,
     types
  } = require('../db');
+
+//  var { pages } = require('../db');
 
 function initOrdered(){
     // console.log('init : ', cards.length);
@@ -58,6 +61,11 @@ function initOrdered(){
       })];
     cards.splice(0,cards.length);
     aux.forEach( a => cards.push(a) );
+    // ==============================================================================
+    // pages = cards.length/pageLimit;
+    // console.log('Paso por Init Ordered : ', cards.length);
+    // console.log('cards.length/pageLimit : ', cards.length/pageLimit);
+    // console.log('pages : ', pages);
 };
 
 module.exports = initOrdered;

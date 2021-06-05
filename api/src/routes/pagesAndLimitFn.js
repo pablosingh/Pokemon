@@ -1,5 +1,5 @@
-const { pages, pageLimit } = require('../db');
+const { pageLimit, cards } = require('../db');
 
-const pagesAndLimitFn = (req, res) => res.json( { pages, pageLimit } );
+const pagesAndLimitFn = (req, res) => res.json( { pages: cards.length/pageLimit, pageLimit } );
 
 module.exports = pagesAndLimitFn;
