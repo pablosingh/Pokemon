@@ -11,22 +11,7 @@ import store from './redux/store';
 // ===================== Styles ======================
 import s from'./App.module.css';
 import styled from 'styled-components';
-// import image from './img/pokemon.jpg';
-// import image from './img/pokebola_violeta.png';
-// import image from './img/muchos_pikachu.jpg';
-// import image from './img/pokebola_violeta1.jpeg';
-// import image from './img/pikachu.png';
-// import image from './img/tres.jpeg';
 import image from './img/azul.jpeg';
-// import image from './img/pik_saludo.jpg';
-// import image from './img/los_3.jpg';
-// import image from './img/azul_pasto.jpg';
-// import image from './img/lugia.jpg';
-// import image from './img/mewtwo.png';
-// import image from './img/azul2.jpg';
-// import image from './img/azul_hd.jpg';
-// import image from './img/ra.jpg';
-
 
 const Fondo = styled.div`
   min-height: 100vh;

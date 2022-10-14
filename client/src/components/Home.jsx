@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { initFilters } from '../redux/actions';
+// import { initFilters } from '../redux/actions';
 import SearchBar from './SearchBar';
 import Filters from './Filters';
 import Cards from './Cards';
@@ -11,7 +11,7 @@ export default function Home() {
     const dispatch = useDispatch();
     useEffect(() => {
         console.log('init filtereds');
-        dispatch(initFilters());
+        // dispatch(initFilters());
     }, [])
     return (
         <div className={s.container}>
